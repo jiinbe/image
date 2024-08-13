@@ -23,18 +23,9 @@
 <p><label>Frame:</label> <input accept="image/*" type='file' id="photoimg" oninput="checkInput()" /></p>
 
 <p>
-<button id="dl" disabled>Download</button>
+<button id="save">Download</button>
 </p>
 </main>
 <script src="app.js"></script>
-<script>
-function checkInput() {
-var img = document.getElementById('imgInp').value;
-var mask = document.getElementById('maskInp').value;
-var save = document.getElementById('dl');
-save.disabled = img === '';
-save.disabled = mask === '';
-}
-</script>
 </body>
 </html>
