@@ -69,28 +69,15 @@ text-align: center;
 <main>
 <h1>Example Overlay</h1>
 <p class="box">
-are
-Improve this answer
-Follow
-answered Sep 3, 2011 at 14:22
-Variant's user avatar
-Variant
-17.4k44 gold badges4242 silver badges6666 bronze badges
-Add a comment
-0
-
-You can find the solution here. Maybe it will help you.
-
-HTML code:
-
 <div id="container">
 <input type="file" id="imageLoader" name="imageLoader" />
 <input type="file" id="iimageLoader" name="imageLoader" />
 <canvas id="imageCanvas" width="300" height="300"></canvas> 
-<a id="lnkDownload" href="#">Save image</a>
+<button id="lnkDownload">Save image</button>
 </div>
-JS code:
-
+</p>
+</main>
+<script>
 var canvas = new fabric.Canvas('imageCanvas', {
 backgroundColor: 'rgb(240,240,240)'
 });
