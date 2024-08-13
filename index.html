@@ -102,8 +102,10 @@ image.src = theFile.target.result;
 
 image.onload = function() {
 // access image size here 
-origin_w2=this.width;
-origin_h2=this.height;
+//origin_w2=this.width;
+//origin_h2=this.height;
+origin_w2=600;
+origin_h2=600;
 console.log(origin_w2);
 $('#photo').attr('src', this.src);
 					
@@ -147,7 +149,7 @@ $( "#photo" ).draggable({});
 $(document).ready(function() {
 $(".draggable").draggable({ 
 containment: '', 
-scroll: true
+scroll: false
 }).mousemove(function(){
 var coord = $(this).position();
 var width = $(this).width();
