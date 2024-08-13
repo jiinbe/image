@@ -147,7 +147,7 @@ $( "#photo" ).draggable({});
 $(document).ready(function() {
 $(".draggable").draggable({ 
 containment: '', 
-scroll: false
+scroll: true
 }).mousemove(function(){
 var coord = $(this).position();
 var width = $(this).width();
