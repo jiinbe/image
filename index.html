@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<title>Example Picture Overlay</title>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1" />-->
+<link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+<main>
+<h1>Example Overlay</h1>
+<p class="box">
+<img id="avatar" src="placeholder.png"/>
+<img id="twibbon" src="overlay.png"/>
+<canvas id="cvs"></canvas>
+</p>
+  
+<p><span id="status"></span></p> 
+<p><label>Avatar:</label> <input accept="image/*" type='file' id="imgInp" oninput="checkInput()" /></p>
+<p><label>Frame:</label> <input accept="image/*" type='file' id="maskInp" oninput="checkInput()" /></p>
+
+<p>
+<button id="dl" disabled>Download</button>
+</p>
+</main>
+<script src="app.js"></script>
+<script>
+function checkInput() {
+var img = document.getElementById('imgInp').value;
+var mask = document.getElementById('maskInp').value;
+var save = document.getElementById('dl');
+save.disabled = img === '';
+save.disabled = mask === '';
+}
+</script>
+</body>
+</html>
