@@ -180,7 +180,7 @@ function MouseWheelHandler(e) {
 e.preventDefault();
 var e = window.event || e; // old IE support
 var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-myimage.style.width = Math.max(50, Math.min(800, myimage.width + (30* delta))) + "px";
+myimage.style.width = Math.max(600, Math.min(600, myimage.width + (30* delta))) + "px";
 //myimage.style.height = Math.max(50, Math.min(800, myimage.height + (30 *myimage.width/myimage.height * delta))) + "px";
 //alert(myimage.offsetTop);
 return false;
