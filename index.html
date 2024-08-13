@@ -30,6 +30,8 @@
 var canvas = new fabric.Canvas('imageCanvas', {
 backgroundColor: 'rgb(240,240,240)'
 });
+  
+canvas.selection = false;
 canvas.setWidth(600);
 canvas.setHeight(600);
 
@@ -49,7 +51,7 @@ var imgInstance = new fabric.Image(img, {
 selectable: 1
 })
 canvas.add(imgInstance);
-/* var red = new fabric.Rect({ width: 80, height: 50, fill: 'red'})
+/* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
 canvas.add(red);
 red.center(); */
 canvas.deactivateAll().renderAll();
@@ -70,12 +72,12 @@ var fimg = new Image();
 fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
 selectable: 1,
-width: 400,
-height: 400
+//width: 400,
+//height: 400
 })
 canvas.add(fimgInstance);
 fimgInstance.center();
-/* var red = new fabric.Rect({ width: 80, height: 50, fill: 'red'})
+/* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
 canvas.add(red);
 red.center(); */
 canvas.deactivateAll().renderAll();
