@@ -69,169 +69,104 @@ text-align: center;
 <main>
 <h1>Example Overlay</h1>
 <p class="box">
-<img id="febric" src="placeholder.png"/>
-<img id="photo" src="overlay.png"/>
-<canvas width="600" height="600" id="can"></canvas>
-</p>
-  
-<p><span id="status"></span></p> 
-<p><label>Avatar:</label> <input accept="image/*" type='file' id="backimg" oninput="checkInput()" /></p>
-<p><label>Frame:</label> <input accept="image/*" type='file' id="photoimg" oninput="checkInput()" /></p>
+are
+Improve this answer
+Follow
+answered Sep 3, 2011 at 14:22
+Variant's user avatar
+Variant
+17.4k44 gold badges4242 silver badges6666 bronze badges
+Add a comment
+0
 
-<p>
-<button id="save">Download</button>
-</p>
-</main>
-<script src="app.js"></script>
-<script>
-var origin_w2;
-var origin_h2;
-	
-function readURL_Photo(input) {
+You can find the solution here. Maybe it will help you.
 
-if (input.files && input.files[0]) {
+HTML code:
+
+<div id="container">
+<input type="file" id="imageLoader" name="imageLoader" />
+<input type="file" id="iimageLoader" name="imageLoader" />
+<canvas id="imageCanvas" width="300" height="300"></canvas> 
+<a id="lnkDownload" href="#">Save image</a>
+</div>
+JS code:
+
+var canvas = new fabric.Canvas('imageCanvas', {
+backgroundColor: 'rgb(240,240,240)'
+});
+canvas.setWidth(300);
+canvas.setHeight(300);
+
+var imageLoader = document.getElementById('imageLoader');
+imageLoader.addEventListener('change', handleImage, false);
+
+function handleImage(e) {
+var objects = canvas.getObjects();
+for (var i in objects) {
+objects[i].remove();
+}
 var reader = new FileReader();
-
-/*reader.onload = function (e) {
-$('#photo').attr('src', e.target.result);
-				
-}*/
-reader.onload = (function(theFile) { 
-var image = new Image();
-image.src = theFile.target.result;
-
-image.onload = function() {
-// access image size here 
-//origin_w2=this.width;
-//origin_h2=this.height;
-origin_w2=600;
-origin_h2=600;
-console.log(origin_w2);
-$('#photo').attr('src', this.src);
-					
-};
-});
-			
-			
-			
-			
-reader.readAsDataURL(input.files[0]);
-}
+reader.onload = function(event) {
+var img = new Image();
+img.onload = function() {
+var imgInstance = new fabric.Image(img, {
+selectable: 1
+})
+canvas.add(imgInstance);
+/* var red = new fabric.Rect({ width: 80, height: 50, fill: 'red'})
+canvas.add(red);
+red.center(); */
+canvas.deactivateAll().renderAll();
 }
 
-$("#photoimg").change(function(){
-readURL_Photo(this);
-});
-//febric image insert
-	
-function readURL_Back(input) {
+var iimageLoader = document.getElementById('iimageLoader');
+iimageLoader.addEventListener('change', handleImage, false);
 
-if (input.files && input.files[0]) {
+function handleImage(f) {
+var objects = canvas.getObjects();
+/* for (var i in objects) {
+objects[i].remove();
+} */
 var reader = new FileReader();
+reader.onload = function(event) {
 
-reader.onload = function (e) {
-$('#febric').attr('src', e.target.result);
-$('label[for=shot]').css('display','none');
+var fimg = new Image();
+fimg.onload = function() {
+var fimgInstance = new fabric.Image(fimg, {
+selectable: 1,
+width: 80,
+height: 50
+})
+canvas.add(fimgInstance);
+fimgInstance.center();
+/* var red = new fabric.Rect({ width: 80, height: 50, fill: 'red'})
+canvas.add(red);
+red.center(); */
+canvas.deactivateAll().renderAll();
 }
-
-reader.readAsDataURL(input.files[0]);
+fimg.src = event.target.result;
 }
-}
-
-$("#backimg").change(function(){
-readURL_Back(this);
-});
-// photo drag and drop
-$(function() 
-{
-$( "#photo" ).draggable({});
-});
-$(document).ready(function() {
-$(".draggable").draggable({ 
-containment: '', 
-scroll: false
-}).mousemove(function(){
-var coord = $(this).position();
-var width = $(this).width();
-var height = $(this).height();
-$("p.position").text( "(" + coord.left + "," + coord.top + ")" );
-console.log(coord.top(),coord.left(),coord.width(),coord.height())
-$("p.size").text( "(" + width + "," + height + ")" );
-}).mouseup(function(){
-var coord = $(this).position();
-var width = $(this).width();
-var height = $(this).height();
-               
-               
-});
-});
-	
-//zoon in and out
-var myimage = document.getElementById("photo");
-if (myimage.addEventListener) {
-// IE9, Chrome, Safari, Opera
-myimage.addEventListener("mousewheel", MouseWheelHandler, false);
-// Firefox
-myimage.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
-}
-// IE 6/7/8
-else myimage.attachEvent("onmousewheel", MouseWheelHandler);
-
-function MouseWheelHandler(e) {
-// cross-browser wheel delta
-e.preventDefault();
-var e = window.event || e; // old IE support
-var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-myimage.style.width = Math.max(600, Math.min(600, myimage.width + (30* delta))) + "px";
-//myimage.style.height = Math.max(50, Math.min(800, myimage.height + (30 *myimage.width/myimage.height * delta))) + "px";
-//alert(myimage.offsetTop);
-return false;
-}
-	
-//Create new image
-$("#save").click(function(){
-//alert();
-			
-var c = document.getElementById('can');
-var ctx=c.getContext("2d");
-//ctx.drawImage(null);
-var image1 = document.getElementById("febric");
-var w1=image1.clientWidth;
-var h1=image1.clientHeight;
-var t1=image1.offsetTop;
-var l1=image1.offsetLeft;
-console.log(image1, l1, t1, w1, h1);
-			
-			
-var image2 = document.getElementById("photo");
-var w2=image2.clientWidth;
-var h2=image2.clientHeight;
-var t2=image2.offsetTop;
-var l2=image2.offsetLeft;
-console.log(image2, l2, t2, w2, h2);
-			
-ctx.fillStyle = "#CCCCCC";
-ctx.drawImage(image1, l2, t2, w2, h2 ,0,0,origin_w2,origin_h2);   
-//context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-			
-ctx.drawImage(image2, 0, 0, origin_w2,origin_h2,0,0,origin_w2,origin_h2);      
-var img = c.toDataURL("image/png");      
-var new_html =$('<div id="create_photo"><img src="' + img + '" width="'+origin_w2+'" height="'+origin_h2+'" style="border:solid 1px gray"/>'+
-'<div style="margin-top:10px"><input type="button" value="Download" onclick="download();" id="save"/>'+
-'<input type="button" value="Back" onclick="location.reload();" /></div></div>'); 
-				
-$("main #create_photo").remove();
-$("main").append(new_html);
-			
-});
-//
-function download(){
-var canvas = document.getElementById("can");
-canvas.toBlob(function(blob) {
-saveAs(blob, "output.png");
-}, "image/png");
+reader.readAsDataURL(f.target.files[0]);
 }
 
+img.src = event.target.result;
+
+}
+reader.readAsDataURL(e.target.files[0]);
+}
+
+
+
+var imageSaver = document.getElementById('lnkDownload');
+imageSaver.addEventListener('click', saveImage, false);
+
+function saveImage(e,f) {
+this.href = canvas.toDataURL({
+format: 'png',
+quality: 0.8
+});
+this.download = 'canvas.png'
+}
 </script>
 </body>
 </html>
