@@ -218,8 +218,8 @@ var new_html =$('<div id="create_photo"><img src="' + img + '" width="'+origin_w
 '<div style="margin-top:10px"><input type="button" value="Download" onclick="download();" id="save"/>'+
 '<input type="button" value="Back" onclick="location.reload();" /></div></div>'); 
 				
-$(".container #create_photo").remove();
-$(".container").append(new_html);
+$("main #create_photo").remove();
+$("main").append(new_html);
 			
 });
 //
