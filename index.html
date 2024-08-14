@@ -28,7 +28,10 @@
 </main>
 <script>
 var canvas = new fabric.Canvas('imageCanvas', {
-backgroundColor: 'rgb(240,240,240)'
+backgroundColor: 'rgb(240,240,240)',
+hoverCursor: 'pointer',
+selection: false,
+targetFindTolerance: 2
 });
   
 canvas.selection = false;
@@ -73,7 +76,7 @@ reader.onload = function(event) {
 var fimg = new Image();
 fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
-selectable: 1,
+selectable: 0,
 width: 600,
 height: 600
 })
