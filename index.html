@@ -97,7 +97,14 @@ img.src = event.target.result;
 reader.readAsDataURL(e.target.files[0]);
 }
 
-
+canvas.on({
+'object:moving': function(e) {
+e.target.opacity = 0.5;
+},
+'object:modified': function(e) {
+e.target.opacity = 1;
+}
+});
 
 var imageSaver = document.getElementById('lnkDownload');
 imageSaver.addEventListener('click', saveImage, false);
