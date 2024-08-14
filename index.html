@@ -48,15 +48,15 @@ reader.onload = function(event) {
 var img = new Image();
 img.onload = function() {
 var imgInstance = new fabric.Image(img, {
-selectable: 1,
-width: 600,
-height: 600
+selectable: 1
+//width: 600,
+//height: 600
 })
 canvas.add(imgInstance);
 /* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
 canvas.add(red);
 red.center(); */
-canvas.item(0).selectable = false;
+//canvas.item(0).selectable = false;
 canvas.deactivateAll().renderAll();
 }
 
@@ -75,15 +75,15 @@ var fimg = new Image();
 fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
 selectable: 1,
-//width: 600,
-//height: 600
+width: 600,
+height: 600
 })
 canvas.add(fimgInstance);
 fimgInstance.center();
 /* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
 canvas.add(red);
 red.center(); */
-canvas.item(0).selectable = false;
+//canvas.item(0).selectable = false;
 canvas.deactivateAll().renderAll();
 }
 fimg.src = event.target.result;
