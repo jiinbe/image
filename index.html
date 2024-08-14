@@ -51,6 +51,10 @@ var imgInstance = new fabric.Image(img, {
 selectable: 1,
 //width: 600,
 //height: 600
+borderColor: 'gray',
+cornerColor: 'black',
+cornerSize: 12,
+transparentCorners: true
 })
 canvas.add(imgInstance);
 /* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
@@ -74,7 +78,6 @@ var fimg = new Image();
 fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
 selectable: 0,
-hasBorders : false,
 width: 600,
 height: 600
 })
