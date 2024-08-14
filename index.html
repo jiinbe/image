@@ -48,7 +48,9 @@ reader.onload = function(event) {
 var img = new Image();
 img.onload = function() {
 var imgInstance = new fabric.Image(img, {
-selectable: 1
+selectable: 1,
+width: 600,
+height: 600
 })
 canvas.add(imgInstance);
 /* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
@@ -73,8 +75,8 @@ var fimg = new Image();
 fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
 selectable: 1,
-width: 600,
-height: 600
+//width: 600,
+//height: 600
 })
 canvas.add(fimgInstance);
 fimgInstance.center();
