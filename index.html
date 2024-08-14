@@ -28,10 +28,7 @@
 </main>
 <script>
 var canvas = new fabric.Canvas('imageCanvas', {
-backgroundColor: 'rgb(240,240,240)',
-hoverCursor: 'pointer',
-selection: false,
-targetFindTolerance: 2
+backgroundColor: 'rgb(240,240,240)'
 });
   
 canvas.selection = false;
@@ -78,7 +75,9 @@ fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
 selectable: 0,
 width: 600,
-height: 600
+height: 600,
+selection: false,
+targetFindTolerance: 2
 })
 canvas.add(fimgInstance);
 fimgInstance.center();
