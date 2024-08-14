@@ -48,7 +48,7 @@ reader.onload = function(event) {
 var img = new Image();
 img.onload = function() {
 var imgInstance = new fabric.Image(img, {
-selectable: 1,
+selectable: false,
 //width: 600,
 //height: 600
 })
@@ -73,7 +73,7 @@ reader.onload = function(event) {
 var fimg = new Image();
 fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
-selectable: 1,
+selectable: 0,
 width: 600,
 height: 600
 })
