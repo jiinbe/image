@@ -71,9 +71,10 @@ var reader = new FileReader();
 reader.onload = function(event) {
 
 var fimg = new Image();
+fimg.hasBorders = fimg.hasControls = false;
 fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
-selectable: 1,
+selectable: 0,
 width: 600,
 height: 600
 })
@@ -94,8 +95,6 @@ img.src = event.target.result;
 }
 reader.readAsDataURL(e.target.files[0]);
 }
-
-fimg.hasBorders = fimg.hasControls = false;
 
 //canvas.on({
 //'object:moving': function(e) {
