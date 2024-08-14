@@ -97,7 +97,6 @@ img.src = event.target.result;
 reader.readAsDataURL(e.target.files[0]);
 }
 
-canvas.item(0).hasControls = canvas.item(0).hasBorders = false;
 canvas.on({
 'object:moving': function(e) {
 e.target.opacity = 0.5;
