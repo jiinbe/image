@@ -28,9 +28,7 @@
 </main>
 <script>
 var canvas = new fabric.Canvas('imageCanvas', {
-backgroundColor: 'rgb(240,240,240)',
-isDrawingMode: false,
-preserveObjectStacking: true 
+backgroundColor: 'rgb(240,240,240)'
 });
   
 canvas.selection = false;
@@ -75,7 +73,7 @@ reader.onload = function(event) {
 var fimg = new Image();
 fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
-selectable: 0,
+selectable: false,
 width: 600,
 height: 600
 })
