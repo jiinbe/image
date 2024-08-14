@@ -29,6 +29,8 @@
 <script>
 var canvas = new fabric.Canvas('imageCanvas', {
 backgroundColor: 'rgb(240,240,240)'
+isDrawingMode: false,
+preserveObjectStacking: true 
 });
   
 canvas.selection = false;
@@ -75,16 +77,13 @@ fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
 selectable: 0,
 width: 600,
-height: 600,
-selection: false,
-targetFindTolerance: 2
+height: 600
 })
 canvas.add(fimgInstance);
 fimgInstance.center();
 /* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
 canvas.add(red);
 red.center(); */
-canvas.lockMovementX = true;
 canvas.deactivateAll().renderAll();
 }
 fimg.src = event.target.result;
