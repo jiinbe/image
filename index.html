@@ -75,14 +75,14 @@ fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
 selectable: 1,
 width: 600,
-height: 600,
-lockMovementX = true
+height: 600
 })
 canvas.add(fimgInstance);
 fimgInstance.center();
 /* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
 canvas.add(red);
 red.center(); */
+canvas.lockMovementX = true;
 canvas.deactivateAll().renderAll();
 }
 fimg.src = event.target.result;
