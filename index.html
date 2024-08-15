@@ -87,7 +87,8 @@ fimgInstance.center();
 /* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
 canvas.add(red);
 red.center(); */
-lockMovementY = true;
+fimg.perPixelTargetFind = true;
+fimg.hasControls = img.hasBorders = false;
 canvas.deactivateAll().renderAll();
 }
 fimg.src = event.target.result;
