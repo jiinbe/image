@@ -119,6 +119,15 @@ e.target.opacity = 1;
 }
 });
 
+
+var font = new fabric.Text('HELLO WORLD!', { 
+fill: 'lightgreen' 
+}); 
+ 
+// Render the text on Canvas 
+canvas.add(font); 
+canvas.centerObject(font);
+  
 var imageSaver = document.getElementById('lnkDownload');
 imageSaver.addEventListener('click', saveImage, false);
   
