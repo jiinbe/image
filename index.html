@@ -22,8 +22,8 @@
 </p>
 
 <p>
-<input type="file" id="imageLoader" oninput="finPut()"  accept="image/*" hidden/>
-<input type="file" id="iimageLoader" oninput="finPut()" accept="image/*" hidden/>
+<input type="file" id="imageLoader" accept="image/*" hidden/>
+<input type="file" id="iimageLoader" accept="image/*" hidden/>
 </p>
 
 <p>
@@ -131,11 +131,19 @@ this.download = 'canvas.png'
 }
 </script>
 <script>
-function finPut() {
-var input = document.getElementById('imageLoader').value;
-var button = document.getElementById('lnkDownload');
-button.disabled = input === '';
+let clickButton = document.getElementById("lnkDownload");
+let fileInput = document.getElementById("imageLoader");
+fileInput.addEventListener("change", function () {
+         
+// check if the file is selected or not
+if (fileInput.files.length == 0) {
+clickButton.disabled = true;
+clickButton.opacity = 0.3;
+} else {
+clickButton.disabled = false;
+clickButton.style.opacity = 1;
 }
+});
 </script>
 </body>
 </html>
