@@ -31,6 +31,9 @@ var canvas = new fabric.Canvas('imageCanvas', {
 backgroundColor: 'rgb(240,240,240)'
 });
   
+fabric.Object.prototype.transparentCorners = false;
+fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+  
 canvas.selection = false;
 canvas.setWidth(600);
 canvas.setHeight(600);
