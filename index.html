@@ -31,7 +31,7 @@
 <label for="iimageLoader">Pilih Bingkai</label>
 </p>
 
-<p><a href="#" id="lnkDownload" disabled>Save image</button></a></p>
+<p><button id="lnkDownload">Save image</button></p>
 </main>
 <script>
 var canvas = new fabric.Canvas('imageCanvas', {
@@ -119,17 +119,8 @@ e.target.opacity = 1;
 }
 });
 
-var fileInput = document.getElementById("imageLoader");
 var imageSaver = document.getElementById('lnkDownload');
 imageSaver.addEventListener('click', saveImage, false);
-
-if (fileInput.files.length == 0) {
-clickButton.disabled = true;
-clickButton.opacity = 0.3;
-} else {
-clickButton.disabled = false;
-clickButton.style.opacity = 1;
-}
   
 function saveImage(e,f) {
 this.href = canvas.toDataURL({
