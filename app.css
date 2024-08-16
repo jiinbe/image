@@ -39,7 +39,6 @@ aspect-ratio: 1/1;
 object-fit:cover;
 }
 label {
-display: block;
 margin: 0.4rem 0;
 }
 input:disabled {
