@@ -118,24 +118,11 @@ e.target.opacity = 0.5;
 e.target.opacity = 1;
 }
 });
-  
+
+var fileInput = document.getElementById("imageLoader");
 var imageSaver = document.getElementById('lnkDownload');
 imageSaver.addEventListener('click', saveImage, false);
 
-function saveImage(e,f) {
-this.href = canvas.toDataURL({
-format: 'png',
-quality: 0.8
-});
-this.download = 'canvas.png'
-}
-</script>
-<script>
-let clickButton = document.getElementById("lnkDownload");
-let fileInput = document.getElementById("imageLoader");
-fileInput.addEventListener("change", function () {
-         
-// check if the file is selected or not
 if (fileInput.files.length == 0) {
 clickButton.disabled = true;
 clickButton.opacity = 0.3;
@@ -143,7 +130,14 @@ clickButton.opacity = 0.3;
 clickButton.disabled = false;
 clickButton.style.opacity = 1;
 }
+  
+function saveImage(e,f) {
+this.href = canvas.toDataURL({
+format: 'png',
+quality: 0.8
 });
+this.download = 'canvas.png'
+}
 </script>
 </body>
 </html>
