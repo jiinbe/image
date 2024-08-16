@@ -23,7 +23,6 @@ background-color: #f0f0f2;
 position: relative;
 overflow: hidden;
 width: 100%;
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
 aspect-ratio: 1/1;
 }
 .box img  {
@@ -38,7 +37,6 @@ aspect-ratio: 1/1;
 -o-object-fit:cover;
 object-fit:cover;
 }
-
 input:disabled {
 color: #ccc;
 }
@@ -57,7 +55,7 @@ button:focus {
 border-color: #666;
 }
 label {
-background-color: indigo;
+background-color: #343434;
 color: white;
 padding: 0.5em;
 font-family: sans-serif;
