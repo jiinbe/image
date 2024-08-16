@@ -37,24 +37,7 @@ aspect-ratio: 1/1;
 -o-object-fit:cover;
 object-fit:cover;
 }
-input:disabled {
-color: #ccc;
-}
-button {
-color: #333;
-background-color: #f4f4f4;
-outline: none;
-}
-button:disabled {
-color: #999;
-}
-button:not(:disabled):active {
-background-color: #ddd;
-}
-button:focus {
-border-color: #666;
-}
-label {
+button, label {
 background-color: #343434;
 color: white;
 padding: 0.5em;
