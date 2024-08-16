@@ -130,5 +130,12 @@ quality: 0.8
 this.download = 'canvas.png'
 }
 </script>
+<script>
+function finPut() {
+var input = document.getElementById('imageLoader').value;
+var button = document.getElementById('lnkDownload');
+button.disabled = input === '';
+}
+</script>
 </body>
 </html>
