@@ -65,10 +65,10 @@ selectable: 1,
 // width: 600,
 // height: 600,
 // borderColor: 'black',
-cornerColor: 'black',
-cornerSize: 30,
+// cornerColor: 'black',
+// cornerSize: 30,
 // padding: 20,
-transparentCorners: true
+// transparentCorners: true
 })
 canvas.add(imgInstance);
 /* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
@@ -140,6 +140,92 @@ format: 'png',
 quality: 0.8
 });
 this.download = 'canvas.png'
+}
+
+
+fabric.Object.prototype.drawControls = function(ctx, styleOverride) {
+styleOverride = styleOverride || {};
+var wh = this._calculateCurrentDimensions(),
+width = wh.x,
+height = wh.y,
+scaleOffset = styleOverride.cornerSize || this.cornerSize,
+left = -(width + scaleOffset) / 2,
+top = -(height + scaleOffset) / 2,
+transparentCorners = typeof styleOverride.transparentCorners !== 'undefined' ?
+styleOverride.transparentCorners : this.transparentCorners,
+hasRotatingPoint = typeof styleOverride.hasRotatingPoint !== 'undefined' ?
+styleOverride.hasRotatingPoint : this.hasRotatingPoint,
+methodName = transparentCorners ? 'stroke' : 'fill';
+ctx.save();
+ctx.strokeStyle = ctx.fillStyle = styleOverride.cornerColor || this.cornerColor;
+if (!this.transparentCorners) {
+ctx.strokeStyle = styleOverride.cornerStrokeColor || this.cornerStrokeColor;
+}
+this._setLineDash(ctx, styleOverride.cornerDashArray || this.cornerDashArray, null);
+// top-left
+const cancel = new Image()
+cancel.src = 'https://upload.wikimedia.org/wikipedia/commons/6/65/Crystal_button_cancel.svg'
+ctx.drawImage(cancel, left, top, this.cornerSize, this.cornerSize)
+// top-right
+this._drawControl('tr', ctx, methodName,
+left + width,
+top, styleOverride);
+// bottom-left
+this._drawControl('bl', ctx, methodName,
+left,
+top + height, styleOverride);
+// bottom-right
+this._drawControl('br', ctx, methodName,
+left + width,
+top + height, styleOverride);
+if (!this.get('lockUniScaling')) {
+// middle-top
+this._drawControl('mt', ctx, methodName,
+left + width / 2,
+top, styleOverride);
+// middle-bottom
+this._drawControl('mb', ctx, methodName,
+left + width / 2,
+top + height, styleOverride);
+// middle-right
+this._drawControl('mr', ctx, methodName,
+left + width,
+top + height / 2, styleOverride);
+// middle-left
+this._drawControl('ml', ctx, methodName,
+left,
+top + height / 2, styleOverride);
+}
+// middle-top-rotate
+if (hasRotatingPoint) {
+this._drawControl('mtr', ctx, methodName,
+left + width / 2,
+top - this.rotatingPointOffset, styleOverride);
+}
+ctx.restore();
+return this;
+},
+
+fabric.Canvas.prototype._getActionFromCorner = function(target, corner, e) {
+if (!corner) {
+return 'drag';
+}
+switch (corner) {
+case 'mtr':
+return 'rotate';
+case 'ml':
+break;
+case 'mr':
+return e[this.altActionKey] ? 'skewY' : 'scaleX';
+case 'mt':
+case 'mb':
+return e[this.altActionKey] ? 'skewX' : 'scaleY';
+case 'tl': // 增加左上刪除動作
+canvas.remove(target)
+return 'deleted'
+default:
+return 'scale';
+}
 }
 </script>
 <script>
