@@ -149,8 +149,8 @@ var wh = this._calculateCurrentDimensions(),
 width = wh.x,
 height = wh.y,
 scaleOffset = styleOverride.cornerSize || this.cornerSize,
-left = -(width + scaleOffset) / 2,
-top = -(height + scaleOffset) / 2,
+left = -(width + scaleOffset) / 1,
+top = -(height + scaleOffset) / 1,
 transparentCorners = typeof styleOverride.transparentCorners !== 'undefined' ?
 styleOverride.transparentCorners : this.transparentCorners,
 hasRotatingPoint = typeof styleOverride.hasRotatingPoint !== 'undefined' ?
@@ -181,25 +181,25 @@ top + height, styleOverride);
 if (!this.get('lockUniScaling')) {
 // middle-top
 this._drawControl('mt', ctx, methodName,
-left + width / 2,
+left + width / 1,
 top, styleOverride);
 // middle-bottom
 this._drawControl('mb', ctx, methodName,
-left + width / 2,
+left + width / 1,
 top + height, styleOverride);
 // middle-right
 this._drawControl('mr', ctx, methodName,
 left + width,
-top + height / 2, styleOverride);
+top + height / 1, styleOverride);
 // middle-left
 this._drawControl('ml', ctx, methodName,
 left,
-top + height / 2, styleOverride);
+top + height / 1, styleOverride);
 }
 // middle-top-rotate
 if (hasRotatingPoint) {
 this._drawControl('mtr', ctx, methodName,
-left + width / 2,
+left + width / 1,
 top - this.rotatingPointOffset, styleOverride);
 }
 ctx.restore();
