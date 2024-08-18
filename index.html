@@ -142,6 +142,12 @@ quality: 0.8
 this.download = 'canvas.png'
 }
 
+
+var delBtn = document.getElementById('delete');
+
+// Hide the delete button until needed
+delBtn.style.display = 'none'
+
 // When a selection is being made
 canvas.on({
 'selection:created': () => {
