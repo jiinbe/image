@@ -4,8 +4,10 @@
 <title>Example Picture Overlay</title>
 
 <meta charset="utf-8" />
+<!--
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+-->
 <link rel="stylesheet" href="app.css">
 <style>
 </style>
@@ -43,8 +45,8 @@ fabric.Object.prototype.transparentCorners = false;
 fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
   
 canvas.selection = false;
-canvas.setWidth(300);
-canvas.setHeight(300);
+canvas.setWidth(600);
+canvas.setHeight(600);
 
 var imageLoader = document.getElementById('imageLoader');
 imageLoader.addEventListener('change', handleImage, false);
@@ -90,8 +92,8 @@ var fimg = new Image();
 fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
 selectable: 0,
-width: 300,
-height: 300
+width: 600,
+height: 600
 })
 canvas.add(fimgInstance);
 fimgInstance.center();
