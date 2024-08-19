@@ -167,5 +167,44 @@ quality: 0.8
 this.download = 'canvas.png'
 }
 </script>
+<script>
+function addDeleteBtn(x, y, w){
+$(".deleteBtn").remove();
+var btnLeft = x;
+var btnTop = y - 30;
+var widthadjust=w/2;
+btnLeft=widthadjust+btnLeft-1
+var deleteBtn = '<img src="https://www.funagain.com/images/old/common/delete-icon.png" class="deleteBtn" ' +
+'style="position:absolute;top:'+btnTop+'px;right:'+btnLeft+'px;cursor:pointer;"/>';
+$(".canvas-container").append(deleteBtn);
+}
+
+canvas.on('object:selected',function(e){
+addDeleteBtn(e.target.oCoords.mt.x, e.target.oCoords.mt.y, e.target.width);
+});
+
+canvas.on('mouse:down',function(e){
+if(!canvas.getActiveObject())
+{
+$(".deleteBtn").remove();
+}
+});
+
+canvas.on('object:modified',function(e){
+addDeleteBtn(e.target.oCoords.mt.x, e.target.oCoords.mt.y, e.target.width);
+});
+
+canvas.on('object:moving',function(e){
+$(".deleteBtn").remove();
+});
+
+$(document).on('click',".deleteBtn",function(){
+if(canvas.getActiveObject())
+{
+canvas.remove(canvas.getActiveObject());
+$(".deleteBtn").remove();
+}
+});
+</script>
 </body>
 </html>
