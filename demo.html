@@ -61,5 +61,111 @@ margin-top: 2em;
 </p>
 
 <p><a href="#" id="dl">Save image</a></p>
+<script>
+var canvas = new fabric.Canvas('imageCanvas', {
+backgroundColor: 'rgb(240,240,240)'
+});
+  
+fabric.Object.prototype.transparentCorners = false;
+fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+  
+canvas.selection = false;
+canvas.setWidth(512);
+canvas.setHeight(512);
+
+var imageLoader = document.getElementById('photo');
+imageLoader.addEventListener('change', handleImage, false);
+
+function handleImage(e) {
+var objects = canvas.getObjects();
+for (var i in objects) {
+objects[i].remove();
+}
+var reader = new FileReader();
+reader.onload = function(event) {
+var img = new Image();
+img.onload = function() {
+var imgInstance = new fabric.Image(img, {
+selectable: 1,
+// width: 600,
+// height: 600,
+borderColor: 'black',
+cornerColor: 'black',
+cornerSize: 30,
+// padding: 20,
+//transparentCorners: true
+})
+canvas.add(imgInstance);
+/* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
+canvas.add(red);
+red.center(); */
+canvas.deactivateAll().renderAll();
+}
+
+var iimageLoader = document.getElementById('frame');
+iimageLoader.addEventListener('change', handleImage, false);
+
+function handleImage(f) {
+var objects = canvas.getObjects();
+/* for (var i in objects) {
+objects[i].remove();
+} */
+var reader = new FileReader();
+reader.onload = function(event) {
+
+var fimg = new Image();
+fimg.onload = function() {
+var fimgInstance = new fabric.Image(fimg, {
+selectable: 0,
+width: 512,
+height: 512
+})
+canvas.add(fimgInstance);
+fimgInstance.center();
+/* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
+canvas.add(red);
+red.center(); */
+canvas.deactivateAll().renderAll();
+}
+fimg.src = event.target.result;
+}
+reader.readAsDataURL(f.target.files[0]);
+}
+
+img.src = event.target.result;
+
+}
+reader.readAsDataURL(e.target.files[0]);
+}
+
+canvas.on({
+'object:moving': function(e) {
+e.target.opacity = 0.5;
+},
+'object:modified': function(e) {
+e.target.opacity = 1;
+}
+});
+
+
+var font = new fabric.Text('HELLO WORLD!', { 
+fill: 'black',
+originX: 'center',
+originY: 'center'
+}); 
+canvas.add(font); 
+canvas.centerObject(font);
+  
+var imageSaver = document.getElementById('dl');
+imageSaver.addEventListener('click', saveImage, false);
+  
+function saveImage(e,f) {
+this.href = canvas.toDataURL({
+format: 'png',
+quality: 0.8
+});
+this.download = 'canvas.png'
+}
+</script>
 </body>
 </html>
