@@ -16,11 +16,22 @@ font-family: Tahoma, Verdana, Arial, sans-serif;
 <script src="https://jiinbe.github.io/picture/app/canvas-toBlob.js"></script>
 </head>
 <body>
-<h1>502 Bad Gateway</h1>
-<p>If you see this page, your connection with the server is working but the internal service providing this path is not responding.</p>
-<p>Administrator, make sure that the service is running, and check its logs if it is not.
-The Services page is in your webadmin, under <code>Tools > Services</code>.</p>
-<p><em>Thank you for using YunoHost.</em></p>
-<p><button>Back To Home</button></p>
+<h1>Example Overlay</h1>
+<p class="box">
+<canvas id="imageCanvas"></canvas> 
+</p>
+
+<p>
+<input type="file" id="photo" accept="image/*" hidden/>
+<input type="file" id="frame" accept="image/*" hidden/>
+</p>
+
+<p>
+<label for="photo">Pilih Foto</label>
+<label for="frame">Pilih Bingkai</label>
+<label id="delete">Hapus Foto</label>
+</p>
+
+<p><a href="#" id="dl">Save image</a></p>
 </body>
 </html>
