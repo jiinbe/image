@@ -8,6 +8,25 @@ width: 35em;
 margin: 0 auto;
 font-family: Tahoma, Verdana, Arial, sans-serif;
 }
+.box {
+background-color: #f0f0f2;
+position: relative;
+overflow: hidden;
+width: 100%;
+aspect-ratio: 1/1;
+}
+.box img  {
+position: absolute;
+top: 50%;
+left: 50%;
+-webkit-transform: translate(-50%,-50%);
+-ms-transform: translate(-50%,-50%);
+transform: translate(-50%,-50%);
+width: 100%;
+aspect-ratio: 1/1;
+-o-object-fit:cover;
+object-fit:cover;
+}
 </style>
   
 <script src="https://jiinbe.github.io/picture/app/jquery.min.js"></script>
