@@ -166,36 +166,38 @@ this.download = 'canvas.png'
 }
 </script>
 <script>
-function addDeleteBtn(x, y, w){
-$(".deleteBtn").remove();
-var btnLeft = x;
-var btnTop = y - 30;
-var widthadjust=w/2;
-btnLeft=widthadjust+btnLeft-1
-var deleteBtn = '<span class="deleteBtn">X</span>' +
-'style="position:absolute;top:'+btnTop+'px;right:'+btnLeft+'px;cursor:pointer;"/>';
+function addDeleteBtn(x, y) {
+$(".deleteBtn").remove(); 
+var btnLeft = x-10;
+var btnTop = y-10;
+var deleteBtn = '<img src="remove.png" class="deleteBtn" style="position:absolute;top:'+btnTop+'px;left:'+btnLeft+'px;cursor:pointer;width:20px;height:20px;"/>';
 $(".canvas-container").append(deleteBtn);
 }
 
 canvas.on('object:selected',function(e){
-addDeleteBtn(e.target.oCoords.mt.x, e.target.oCoords.mt.y, e.target.width);
+addDeleteBtn(e.target.oCoords.tr.x, e.target.oCoords.tr.y);
 });
 
 canvas.on('mouse:down',function(e){
 if(!canvas.getActiveObject())
 {
-$(".deleteBtn").remove();
+$(".deleteBtn").remove(); 
 }
 });
 
 canvas.on('object:modified',function(e){
-addDeleteBtn(e.target.oCoords.mt.x, e.target.oCoords.mt.y, e.target.width);
+addDeleteBtn(e.target.oCoords.tr.x, e.target.oCoords.tr.y);
 });
 
+canvas.on('object:scaling',function(e){
+$(".deleteBtn").remove(); 
+});
 canvas.on('object:moving',function(e){
-$(".deleteBtn").remove();
+$(".deleteBtn").remove(); 
 });
-
+canvas.on('object:rotating',function(e){
+$(".deleteBtn").remove(); 
+});
 $(document).on('click',".deleteBtn",function(){
 if(canvas.getActiveObject())
 {
