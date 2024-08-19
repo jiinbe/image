@@ -89,11 +89,9 @@ var imgInstance = new fabric.Image(img, {
 selectable: 1,
 // width: 600,
 // height: 600,
-//borderColor: 'black',
+borderColor: 'black',
 cornerColor: 'black',
-//cornerSize: 30,
-// padding: 20,
-//transparentCorners: true
+cornerSize: 30,
 })
 canvas.add(imgInstance);
 /* var red = new fabric.Rect({ width: 512, height: 512, fill: 'red'})
@@ -174,7 +172,7 @@ var btnLeft = x;
 var btnTop = y - 30;
 var widthadjust=w/2;
 btnLeft=widthadjust+btnLeft-1
-var deleteBtn = '<img src="remove.png" class="deleteBtn" ' +
+var deleteBtn = '<span class="deleteBtn">X</span>' +
 'style="position:absolute;top:'+btnTop+'px;right:'+btnLeft+'px;cursor:pointer;"/>';
 $(".canvas-container").append(deleteBtn);
 }
