@@ -59,10 +59,10 @@ margin-top: 2em;
 <p>
 <label for="photo">Pilih Foto</label>
 <label for="frame">Pilih Bingkai</label>
-<label id="delete">Hapus Foto</label>
+<label id="dl">Download</label>
 </p>
 
-<p><a href="#" id="dl">Save image</a></p>
+<!--<p><a href="#" id="dl">Save image</a></p>-->
 <script>
 var canvas = new fabric.Canvas('imageCanvas', {
 backgroundColor: 'rgb(240,240,240)'
@@ -156,16 +156,22 @@ originY: 'center'
 canvas.add(font); 
 canvas.centerObject(font);
   
-var imageSaver = document.getElementById('dl');
-imageSaver.addEventListener('click', saveImage, false);
+//var imageSaver = document.getElementById('dl');
+//imageSaver.addEventListener('click', saveImage, false);
   
-function saveImage(e,f) {
-this.href = canvas.toDataURL({
-format: 'png',
-quality: 0.8
+//function saveImage(e,f) {
+//this.href = canvas.toDataURL({
+//format: 'png',
+//quality: 0.8
+//});
+//this.download = 'canvas.png'
+//}
+
+$("#dl").click(function(){
+$("#imageCanvas").get(0).toBlob(function(blob){
+saveAs(blob, "image.png");
 });
-this.download = 'canvas.png'
-}
+});
 </script>
 </body>
 </html>
