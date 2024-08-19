@@ -180,6 +180,14 @@ $("#imageCanvas").get(0).toBlob(function(blob){
 saveAs(blob, "image.png");
 });
 });
+
+function checkInput() {
+var input = document.getElementById('photo').value;
+var input2 = document.getElementById('frame').value;
+
+var label = document.getElementById('dl');
+label.disabled = input === '';
+}
 </script>
 </body>
 </html>
