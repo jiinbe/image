@@ -171,8 +171,8 @@ fabric.Object.prototype.transparentCorners = false;
 fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
   
 canvas.selection = false;
-canvas.setWidth(1024);
-canvas.setHeight(1024);
+canvas.setWidth(800);
+canvas.setHeight(800);
 
 var imageLoader = document.getElementById('photo');
 imageLoader.addEventListener('change', handleImage, false);
@@ -214,8 +214,8 @@ var fimg = new Image();
 fimg.onload = function() {
 var fimgInstance = new fabric.Image(fimg, {
 selectable: 0,
-width: 1024,
-height: 1024
+width: 800,
+height: 800
 })
 canvas.add(fimgInstance);
 fimgInstance.center();
