@@ -269,6 +269,13 @@ var button2 = document.getElementById('shared');
 button.disabled = input === '';
 button2.disabled = input2 === '';
 }
+
+// Refresh page
+function refresh() {
+setTimeout(function() {
+location.reload()
+}, 100);
+}
 </script>
 <script>
 document.getElementById("shared").addEventListener("click", () => {
