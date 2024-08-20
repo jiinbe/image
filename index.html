@@ -170,5 +170,13 @@ canvas.remove(object);
 }
 }
 </script>
+<script>
+function checkInput() {
+var input = document.getElementById('photo').value;
+var input2 = document.getElementById('frame').value;
+var button = document.getElementById('dl');
+button.disabled = input === '';
+}
+</script>
 </body>
 </html>
