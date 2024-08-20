@@ -37,14 +37,13 @@ aspect-ratio: 1/1;
 -o-object-fit:cover;
 object-fit:cover;
 }
-button, label {
+button {
 background-color: #343434;
 color: white;
-padding: 0.5em;
+padding: 2em;
 font-family: sans-serif;
 border-radius: 0.3em;
 cursor: pointer;
-margin-top: 2em;
 }
 @media (max-width: 700px) {
 main {
