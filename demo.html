@@ -108,11 +108,13 @@ var img = new Image();
 img.onload = function() {
 var imgInstance = new fabric.Image(img, {
 selectable: 1,
-// width: 600,
-// height: 600,
 borderColor: 'black',
 cornerColor: 'black',
 cornerSize: 30,
+originX: 'left',
+originY: 'top',
+left: 0,
+top: 0
 })
 canvas.add(imgInstance);
 /* var red = new fabric.Rect({ width: 512, height: 512, fill: 'red'})
