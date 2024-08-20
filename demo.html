@@ -20,7 +20,7 @@ background: #fff;
 .right {
 display: flow-root;
 background: #fff;
-max-width: 100%;
+min-width: 100px;
 }
 .box {
 background-color: #f0f0f2;
@@ -60,18 +60,6 @@ cursor: pointer;
 <body>
 <main>
 <div class="left">
-<h1>Cara Membuat Bingkai</h1>
-<ol>
-<li>Pilih Foto.</li>
-<li>Pilih bingkai Anda dengan latar belakang transparan sebagai File .PNG</li>
-<li>Di setiap pojok foto, pilih tarik atau geser untuk zoom.</li>
-<li>Pas kan ukuran foto dan sesuaikan dengan bingkai Anda.</li>
-<li>Klik Download.</li>
-</ol>
-<!--<p><a href="#" id="dl">Save image</a></p>-->
-</div>
-
-<div class="right">
 <p class="box">
 <canvas id="imageCanvas"></canvas> 
 </p>
@@ -85,6 +73,17 @@ cursor: pointer;
 <input type="file" id="photo" accept="image/*" hidden/>
 <input type="file" id="frame" accept="image/*" hidden/>
 </p>
+</div>
+
+<div class="right">
+<h1>Cara Membuat Bingkai</h1>
+<ol>
+<li>Pilih Foto.</li>
+<li>Pilih bingkai Anda dengan latar belakang transparan sebagai File .PNG</li>
+<li>Di setiap pojok foto, pilih tarik atau geser untuk zoom.</li>
+<li>Pas kan ukuran foto dan sesuaikan dengan bingkai Anda.</li>
+<li>Klik Download.</li>
+</ol>
 </div>
 </main>
   
