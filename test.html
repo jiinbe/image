@@ -171,8 +171,10 @@ fabric.Object.prototype.transparentCorners = false;
 fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
   
 canvas.selection = false;
-canvas.setWidth(600);
-canvas.setHeight(600);
+//canvas.setWidth(600);
+//canvas.setHeight(600);
+canvas.setWidth(document.body.scrollWidth);
+canvas.setHeight(document.body.scrollHeight);
 
 var imageLoader = document.getElementById('photo');
 imageLoader.addEventListener('change', handleImage, false);
