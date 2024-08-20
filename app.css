@@ -40,7 +40,7 @@ object-fit:cover;
 button {
 background-color: #343434;
 color: white;
-padding: 0.5em 1em;
+padding: 1em 2em;
 font-family: sans-serif;
 border-radius: 0.3em;
 cursor: pointer;
