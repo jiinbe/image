@@ -21,9 +21,6 @@
 <p>
 <button onclick="document.getElementById('photo').click();">Pilih Foto</button>
 <button onclick="document.getElementById('frame').click();">Pilih Bingkai</button>
-<!--
-<button id="dl" disabled>Download</button>
--->
 </p>
 <p class="box">
 <canvas id="imageCanvas"></canvas> 
@@ -35,10 +32,6 @@
 </p>
 
 <p>
-<!--
-<button onclick="document.getElementById('photo').click();">Pilih Foto</button>
-<button onclick="document.getElementById('frame').click();">Pilih Bingkai</button>
--->
 <button id="dl" disabled>Download</button>
 </p>
 
@@ -77,13 +70,9 @@ var img = new Image();
 img.onload = function() {
 var imgInstance = new fabric.Image(img, {
 selectable: 1,
-// width: 600,
-// height: 600,
 borderColor: 'black',
 cornerColor: 'black',
-cornerSize: 30,
-// padding: 20,
-//transparentCorners: true
+cornerSize: 30
 })
 canvas.add(imgInstance);
 /* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
