@@ -151,34 +151,7 @@ $("#imageCanvas").get(0).toBlob(function(blob){
 saveAs(blob, "image.png");
 });
 });
-</script>
 
-<script>
-$("#delete").click(function(){
-canvas.isDrawingMode = false;
-deleteObjects();
-});
-
-function deleteObjects(){
-var activeObject = canvas.getActiveObject(),
-activeGroup = canvas.getActiveGroup();
-if (activeObject) {
-if (confirm('Are you sure?')) {
-canvas.remove(activeObject);
-}
-}
-else if (activeGroup) {
-if (confirm('Are you sure?')) {
-var objectsInGroup = activeGroup.getObjects();
-canvas.discardActiveGroup();
-objectsInGroup.forEach(function(object) {
-canvas.remove(object);
-});
-}
-}
-}
-</script>
-<script>
 function checkInput() {
 var input = document.getElementById('photo').value;
 var input2 = document.getElementById('frame').value;
