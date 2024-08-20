@@ -134,5 +134,141 @@ text-align: left;
 <button onclick="refresh()"><i class="bi bi-arrow-clockwise"></i></button>
 <!--<button onclick="toggleOutputMode()"><i class="bi bi-arrow-left-right"></i></button>-->
 </div>
+
+<script>
+var canvas = new fabric.Canvas('imageCanvas', {
+backgroundColor: 'rgb(240,240,240)'
+});
+  
+fabric.Object.prototype.transparentCorners = false;
+fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+  
+canvas.selection = false;
+canvas.setWidth(600);
+canvas.setHeight(600);
+
+var imageLoader = document.getElementById('photo');
+imageLoader.addEventListener('change', handleImage, false);
+
+function handleImage(e) {
+var objects = canvas.getObjects();
+for (var i in objects) {
+objects[i].remove();
+}
+var reader = new FileReader();
+reader.onload = function(event) {
+var img = new Image();
+img.onload = function() {
+var imgInstance = new fabric.Image(img, {
+selectable: 1,
+borderColor: 'black',
+cornerColor: 'black',
+cornerSize: 30
+})
+canvas.add(imgInstance);
+/* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
+canvas.add(red);
+red.center(); */
+canvas.deactivateAll().renderAll();
+}
+
+var iimageLoader = document.getElementById('frame');
+iimageLoader.addEventListener('change', handleImage, false);
+
+function handleImage(f) {
+var objects = canvas.getObjects();
+/* for (var i in objects) {
+objects[i].remove();
+} */
+var reader = new FileReader();
+reader.onload = function(event) {
+
+var fimg = new Image();
+fimg.onload = function() {
+var fimgInstance = new fabric.Image(fimg, {
+selectable: 0,
+width: 600,
+height: 600
+})
+canvas.add(fimgInstance);
+fimgInstance.center();
+/* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
+canvas.add(red);
+red.center(); */
+canvas.deactivateAll().renderAll();
+}
+fimg.src = event.target.result;
+}
+reader.readAsDataURL(f.target.files[0]);
+}
+
+img.src = event.target.result;
+
+}
+reader.readAsDataURL(e.target.files[0]);
+}
+
+canvas.on({
+'object:moving': function(e) {
+e.target.opacity = 0.5;
+},
+'object:modified': function(e) {
+e.target.opacity = 1;
+}
+});
+
+
+var font = new fabric.Text('HELLO WORLD!', { 
+fill: 'black',
+originX: 'center',
+originY: 'center'
+}); 
+canvas.add(font); 
+canvas.centerObject(font);
+  
+$("#dl").click(function(){
+$("#imageCanvas").get(0).toBlob(function(blob){
+saveAs(blob, "image.png");
+});
+});
+
+function checkInput() {
+var input = document.getElementById('photo').value;
+var input2 = document.getElementById('frame').value;
+var button = document.getElementById('dl');
+var button2 = document.getElementById('shared');
+button.disabled = input === '';
+button2.disabled = input2 === '';
+}
+</script>
+<script>
+document.getElementById("shared").addEventListener("click", () => {
+alert("share image");
+const dataUrl = canvas.toDataURL(); 
+fetch(dataUrl)
+.then(res => res.blob())
+.then(blob => {
+//console.log(blob)
+const filesArray = [new File([blob], 'image.png', { type: blob.type, lastModified: new Date().getTime() })];
+console.log(filesArray);
+const shareData = {
+title: "FREE AND SIMPLE PFP GENERATOR",
+text: "FREE AND SIMPLE PFP GENERATOR",
+url: "https://jiinbe.github.io/fabricjs2/",
+files: filesArray
+};
+console.log(shareData);
+if (navigator.share) {
+navigator.share(
+shareData
+)
+.then(() => alert("thanks for share")) 
+.catch(error => alert("error", error)); 
+} else {
+alert('navigator.share not available'); 
+}
+})
+});
+</script>
 </body>
 </html>
