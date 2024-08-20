@@ -83,6 +83,16 @@ cursor: pointer;
 <li>Pas kan ukuran foto dan sesuaikan dengan bingkai Anda.</li>
 <li>Klik Download.</li>
 </ol>
+
+<p>
+<button type="button" onclick="document.getElementById('photo').click();">Pilih Foto</button>
+<button type="button" onclick="document.getElementById('frame').click();">Pilih Bingkai</button>
+<button id="dl">Download</button>
+</p>
+<p>
+<input type="file" id="photo" accept="image/*" hidden/>
+<input type="file" id="frame" accept="image/*" hidden/>
+</p>
 </div>
 </main>
   
