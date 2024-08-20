@@ -3,12 +3,54 @@
 <head>
 <title>502 Bad Gateway</title>
 <style>
+@import "compass/css3";
+
+.container {
+display: table; // Needed
+width: 100%; // Needed
+height: 100%; // Needed
+}
+.row {
+display: table-row; // Needed
+}
+.left,
+.right,
+.center {
+display: table-cell; // Needed
+padding: 20px;
+}
+.left,
+.right {
+width: 160px;
+background: white;
+}
+.center {
+background: white;
+border-right: solid 20px white;
+}
+
+
+
+
+// Reset / Styling
+html,
 body {
-width: 35em;
-margin: 0 auto;
-font-family: Tahoma, Verdana, Arial, sans-serif;
-overflow: hidden;
-overscroll-behavior: none; 
+height: 100%;
+}
+body {
+padding: 20px;
+box-sizing: border-box;
+}
+h1 {
+margin: 0 0 20px 0;
+padding: 0;
+line-height: 1;
+}
+p {
+margin: 0 0 20px 0;
+}
+ul {
+padding: 0 0 0 20px;
 }
 .box {
 background-color: #f0f0f2;
