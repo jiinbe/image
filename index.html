@@ -33,6 +33,7 @@
 
 <p>
 <button id="dl" disabled>Download</button>
+<button id="shared" disabled>Share</button>
 </p>
 
 <h1>Tutorial:</h1>
@@ -145,7 +146,9 @@ function checkInput() {
 var input = document.getElementById('photo').value;
 var input2 = document.getElementById('frame').value;
 var button = document.getElementById('dl');
+var button2 = document.getElementById('shared');
 button.disabled = input === '';
+button2.disabled = input2 === '';
 }
 </script>
 <script>
