@@ -48,6 +48,7 @@ padding: 0.5em;
 font-family: sans-serif;
 border-radius: 0.3em;
 cursor: pointer;
+max-width: 100%;
 }
 </style>
   
@@ -61,16 +62,6 @@ cursor: pointer;
 <div class="left">
 <p class="box">
 <canvas id="imageCanvas"></canvas> 
-</p>
-
-<p>
-<button type="button" onclick="document.getElementById('photo').click();">Pilih Foto</button>
-<button type="button" onclick="document.getElementById('frame').click();">Pilih Bingkai</button>
-<button id="dl">Download</button>
-</p>
-<p>
-<input type="file" id="photo" accept="image/*" hidden/>
-<input type="file" id="frame" accept="image/*" hidden/>
 </p>
 </div>
 
