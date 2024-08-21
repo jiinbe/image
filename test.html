@@ -15,27 +15,14 @@ min-height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
+overflow: hidden;
 }
 .container {
 position: relative;
 }
-.preview img {
-width: 400px;
+button {
 cursor: pointer;
 }
-.zoom {
-width: 400px;
-height: 400px;
-overflow: hidden;
-position: absolute;
-top: 75px;
-right: -460px;
-pointer-events: none;
-}
-.zoom img {
-position: absolute;
-}
-
 p {
 font-family: 'Roboto';
 max-width: 400px;
@@ -44,7 +31,6 @@ font-size: 13px;
 p a {
 color: #000;
 }
-
 .box {
 background-color: #f0f0f2;
 position: relative;
