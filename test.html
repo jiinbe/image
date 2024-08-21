@@ -70,44 +70,30 @@ object-fit:cover;
 </head>
 
 <body>
+<header class="header">
 <div class="container">
-<div class="preview">
-  
-<p>
-<button type="button" onclick="document.getElementById('photo').click();">Pilih Foto</button>
-<button type="button" onclick="document.getElementById('frame').click();">Pilih Bingkai</button>
-</p>
-  
-<div class="box">
-<canvas id="imageCanvas"></canvas> 
+<h1 class="text-center">
+You can find step by step tutorial on 
+<a href="http://www.thesnippetscoding.co.uk" target="_blank">theSnippetsCoding.co.uk</a>
+</h1>
 </div>
+</header>
 
-<p>
-<!--
-<button type="button" onclick="document.getElementById('photo').click();">Pilih Foto</button>
-<button type="button" onclick="document.getElementById('frame').click();">Pilih Bingkai</button>
--->
-<button id="dl">Download</button>
-</p>
-  
-<p>
-<input type="file" id="photo" accept="image/*" hidden/>
-<input type="file" id="frame" accept="image/*" hidden/>
-</p>
-  
-<!--
-<h1>Tutorial:</h1>
-<ol>
-<li>Pilih Foto.</li>
-<li>Pilih bingkai Anda dengan latar belakang transparan sebagai File .PNG</li>
-<li>Di setiap pojok foto, pilih tarik atau geser untuk zoom.</li>
-<li>Pas kan ukuran foto dan sesuaikan dengan bingkai Anda.</li>
-<li>Klik Download.</li>
-</ol>
--->
-  
+<section class="container">
+<div class="row">
+<div class="twelve columns">
+<section class="text-center">
+<div class="buttons-wrapper">
+<button value="nature">Nature</button>
+<button value="computer">Computer</button>
+<button value="backgrounds">Backgrounds</button>
+<button value="business">Business</button>
+</div>
+<span id="output"></span>
+</section>
 </div>
 </div>
+</section>
 
 <script>
 var canvas = new fabric.Canvas('imageCanvas', {
