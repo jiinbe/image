@@ -61,6 +61,14 @@ aspect-ratio: 1/1;
 -o-object-fit:cover;
 object-fit:cover;
 }
+#output {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+margin-bottom: 10%;
+border: 3px solid #fff;
+box-sizing: border-box;
+}
 </style>    
 
 <script src="app/jquery.min.js"></script>
@@ -89,8 +97,10 @@ You can find step by step tutorial on
 <button value="backgrounds">Backgrounds</button>
 <button value="business">Business</button>
 </div>
+<div id="output">
 <div class="box">
 <canvas id="imageCanvas"></canvas> 
+</div>
 </div>
 </section>
 </div>
