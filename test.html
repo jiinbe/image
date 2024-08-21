@@ -91,9 +91,9 @@ FREE AND SIMPLE PFP GENERATOR
 <div class="twelve columns">
 <section class="text-center">
 <div class="buttons-wrapper">
-<button onclick="document.getElementById('photo').click();">Photo</button>
-<button onclick="document.getElementById('frame').click();">Bingkai</button>
-<button id="dl">Download</button>
+<button value="photo" onclick="document.getElementById('photo').click();">Photo</button>
+<button value="bingkai" onclick="document.getElementById('frame').click();">Bingkai</button>
+<button value="download" id="dl">Download</button>
 <button value="business">Business</button>
 <input type="file" id="photo" accept="image/*" hidden/>
 <input type="file" id="frame" accept="image/*" hidden/>
@@ -253,7 +253,7 @@ alert('navigator.share not available');
 <script>
 //include jQuery library
 $('.buttons-wrapper').click(function() {
-var name = $(this).find('button').html();
+var name = $(this).find('value').html();
 alert('You clicked ' + name);
 });
 </script>
