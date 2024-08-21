@@ -9,103 +9,35 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <style type="text/css">
-body {
-background: linear-gradient(to left, #f1f1f1 70px, #fff 70px);
-overflow: hidden;
-overscroll-behavior: none; 
-}
-p, span {
-font-family: Arial;
-font-size: 11pt;
-padding: 8px 0;
-margin: 0;
-}
-p.heading, span.heading {
-font-weight: bold;
-}
-p.heading.primary, span.heading.primary {
-color: #c7531e;
-}
-span {
-display: inline-block;
-}
-#canvas-wrapper {
-position: absolute;
-top: 0;
-left: 0;
-margin: 5em auto;
-padding: 3em;
-}
-#output-area {
-user-select: none;
-}
-#output-area.output-mode p {
-margin: 0;
-padding: 0;
-background-color: white;
-}
-i {
-font-family: Arial;
-font-size: 11pt;
-padding: 8px 0;
-margin: 0;
-}
-.mod {
-color: rgba(0, 0, 0, 0.7);
-background: #d4d4d4;
-margin: 0 2px;
-padding: 0 8px;
-border-radius: 2px;
-}
-.mod.active {
-color: black;
-background: #46b9da;
-}
-.mod.active.abnormal {
-color: #c00000;
-}
-.mod.template {
-padding: 4px 8px;
-}
-.mod.bold {
-font-weight: bold;
-}
-.mod.output {
-margin: 0 !important;
-padding: 0 !important;
-background: none !important;
-}
-#action-bar {
+.sticky-footer {
+height: 58px;
+background: #006848;
+position: fixed;
+bottom: 0px;
+left: 0px;
+width: 100%;
+z-index: 3;
 display: flex;
-flex-direction: column;
-justify-content: space-around;
-height: 200px;
-position: sticky;
-width: 50px;
-height: 300px;
-bottom: 30%;
-left: 100%;
 }
-#action-bar button {
-font-size: 20px;
+.one-fourth {
+width: 25%;
+float: left;
+color: #fff;
+text-align: center;
+height: 58px;
+cursor: pointer;
 }
-.hidden {
-display: none;
+.one-fourth img {
+width: 25px;
+height: 25px;
+margin: auto;
+margin-top: 11px;
 }
-table {
-font-family: Arial;
-font-size: 11pt;
-margin: 0;
-border-collapse: collapse;
+.one-fourth p {
+font-size: 10px;
+margin-top: 3px;
 }
-td {
-padding: 2px;
-border: 1px solid black;
-}
-td:nth-child(1) {
-font-weight: bold;
-text-align: left;
-}
+
 .box {
 background-color: #f0f0f2;
 position: relative;
