@@ -68,28 +68,23 @@ object-fit:cover;
 </head>
 
 <body>
-<!-- NOTE: ADDED META FOR SCALE -->
-<div id="canvas-wrapper">
-<div class="box">
-<canvas id="imageCanvas"></canvas> 
+<div class="sticky-footer">
+<div class="one-fourth">
+<img src="http://seodesigns.com/projects/codepen/060516/search.png" />
+<p>search</p>
 </div>
+<div class="one-fourth">
+<img src="http://seodesigns.com/projects/codepen/060516/filters.png" />
+<p>filters</p>
 </div>
-
-<div id="action-bar" contenteditable="false">
-  
-<input type="file" id="photo" accept="image/*" hidden/>
-<input type="file" id="frame" accept="image/*" hidden/>
-
-<!-- Prevent accidental button editing -->
-<button onclick="document.getElementById('photo').click();"><i class="bi bi-image-fill"></i></button>
-<!--<button><i class="bi bi-magic"></i></button>-->
-<button onclick="document.getElementById('frame').click();"><i class="bi bi-mask"></i></button>
-<!--<button><i class="bi bi-indent"></i></button>-->
-<button id="dl"><i class="bi bi-download"></i></button>
-<!--<button><i class="bi bi-input-cursor-text"></i></button>-->
-<button id="shared"><i class="bi bi-share"></i></button>
-<!--<button><i class="bi bi-arrow-left-right"></i></button>-->
-<button onclick="refresh()"><i class="bi bi-arrow-clockwise"></i></button>
+<div class="one-fourth">
+<img src="http://seodesigns.com/projects/codepen/060516/map.png" />
+<p>map</p>
+</div>
+<div class="one-fourth">
+<img src="http://seodesigns.com/projects/codepen/060516/radius.png" />
+<p>radius</p>
+</div>
 </div>
 
 <script>
