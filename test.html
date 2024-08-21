@@ -7,37 +7,42 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-<link rel="stylesheet" href="https://seodesigns.com/projects/codepen/reset.css">
-<link rel="stylesheet" href="https://seodesigns.com/projects/codepen/centerbox.css">
 
 <style type="text/css">
-.sticky-footer {
-height: 58px;
-background: #006848;
-position: fixed;
-bottom: 0px;
-left: 0px;
-width: 100%;
-z-index: 3;
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+body {
+min-height: 100vh;
 display: flex;
+justify-content: center;
+align-items: center;
 }
-.one-fourth {
-width: 25%;
-float: left;
-color: #fff;
-text-align: center;
-height: 58px;
+.container {
+position: relative;
+}
+.preview img {
+width: 400px;
 cursor: pointer;
 }
-.one-fourth img {
-width: 25px;
-height: 25px;
-margin: auto;
-margin-top: 11px;
+.zoom {
+width: 400px;
+height: 400px;
+overflow: hidden;
+position: absolute;
+top: 75px;
+right: -460px;
+pointer-events: none;
 }
-.one-fourth p {
-font-size: 10px;
-margin-top: 3px;
+.zoom img {
+position: absolute;
+}
+
+p {
+font-family: 'Roboto';
+max-width: 400px;
+font-size: 13px;
+}
+p a {
+color: #000;
 }
 
 .box {
