@@ -259,13 +259,13 @@ image.src = e.target.result;
 image.onload = function() {
 var img = new fabric.Image(image);
 img.set({
-borderColor: 'gray',
+borderColor: 'black',
 cornerColor: 'black',
 transparentCorners: true,
 left: 100,
 top: 60
 });
-img.scaleToWidth(200);
+img.scaleToWidth(300);
 canvas.add(img).setActiveObject(img).renderAll();
 }
 }
