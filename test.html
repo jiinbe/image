@@ -203,7 +203,7 @@ object-fit:cover;
 <article>
 <h1>How to create a pop-up without JavaScript</h1>
 
-<p><canvas class="cvs" id="c" width="700" height="700"></canvas></p>
+<p class="box"><canvas class="cvs" id="c" width="700" height="700"></canvas></p>
 <p>
 <input type="file" id="imgLoader" accept="image/*">
 <button id="download">Download</button>
@@ -335,152 +335,101 @@ saveAs(blob, "myIMG.png");
 </details>
   
 <script>
-var canvas = new fabric.Canvas('imageCanvas', {
-backgroundColor: 'rgb(240, 240, 240)'
-});
-  
-fabric.Object.prototype.transparentCorners = false;
-fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
-  
+<script>
+canvas = new fabric.Canvas('c');
+canvas.setOverlayImage('https://jiinbe.github.io/picture/mask.png', canvas.renderAll.bind(canvas));
+
 canvas.selection = false;
-canvas.setWidth(800);
-canvas.setHeight(800);
 
-var imageLoader = document.getElementById('photo');
-imageLoader.addEventListener('change', handleImage, false);
-
-function handleImage(e) {
-var objects = canvas.getObjects();
-for (var i in objects) {
-objects[i].remove();
-}
+    
+document.getElementById('imgLoader').onchange = function handleImage(e) {
 var reader = new FileReader();
-reader.onload = function(event) {
-var img = new Image();
-img.onload = function() {
-var imgInstance = new fabric.Image(img, {
-selectable: 1,
-borderColor: 'black',
-cornerColor: 'black',
-cornerSize: 30
-})
-canvas.add(imgInstance);
-/* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
-canvas.add(red);
-red.center(); */
-canvas.deactivateAll().renderAll();
+reader.onload = function (event) { console.log('fdsf');
+var imgObj = new Image();
+imgObj.src = event.target.result;
+imgObj.onload = function () {
+// start fabricJS stuff
+            
+var image = new fabric.Image(imgObj);
+           
+canvas.add(image);
+            
+          
 }
-
-var iimageLoader = document.getElementById('frame');
-iimageLoader.addEventListener('change', handleImage, false);
-
-function handleImage(f) {
-var objects = canvas.getObjects();
-/* for (var i in objects) {
-objects[i].remove();
-} */
-var reader = new FileReader();
-reader.onload = function(event) {
-
-var fimg = new Image();
-fimg.onload = function() {
-var fimgInstance = new fabric.Image(fimg, {
-selectable: 0,
-width: 800,
-height: 800
-})
-canvas.add(fimgInstance);
-fimgInstance.center();
-/* var red = new fabric.Rect({ width: 600, height: 600, fill: 'red'})
-canvas.add(red);
-red.center(); */
-canvas.deactivateAll().renderAll();
-}
-fimg.src = event.target.result;
-}
-reader.readAsDataURL(f.target.files[0]);
-}
-
-img.src = event.target.result;
-
+        
 }
 reader.readAsDataURL(e.target.files[0]);
 }
-
-canvas.on({
-'object:moving': function(e) {
-e.target.opacity = 0.5;
-},
-'object:modified': function(e) {
-e.target.opacity = 1;
-}
-});
-
-
-var font = new fabric.Text('HELLO WORLD!', { 
-fill: 'black',
-originX: 'center',
-originY: 'center'
-}); 
-canvas.add(font); 
-canvas.centerObject(font);
-  
-$("#dl").click(function(){
-$("#imageCanvas").get(0).toBlob(function(blob){
-saveAs(blob, "image.png");
-});
-});
-
-function checkInput() {
-var input = document.getElementById('photo').value;
-var input2 = document.getElementById('frame').value;
-var button = document.getElementById('dl');
-var button2 = document.getElementById('shared');
-button.disabled = input === '';
-button2.disabled = input2 === '';
-}
-
-// Refresh page
-function refresh() {
-setTimeout(function() {
-location.reload()
-}, 100);
-}
-</script>
-<script>
-document.getElementById("shared").addEventListener("click", () => {
-alert("share image");
-const dataUrl = canvas.toDataURL(); 
-fetch(dataUrl)
-.then(res => res.blob())
-.then(blob => {
-//console.log(blob)
-const filesArray = [new File([blob], 'image.png', { type: blob.type, lastModified: new Date().getTime() })];
-console.log(filesArray);
-const shareData = {
-title: "FREE AND SIMPLE PFP GENERATOR",
-text: "FREE AND SIMPLE PFP GENERATOR",
-url: "https://jiinbe.github.io/fabricjs2/",
-files: filesArray
-};
-console.log(shareData);
-if (navigator.share) {
-navigator.share(
-shareData
-)
-.then(() => alert("thanks for share")) 
-.catch(error => alert("error", error)); 
-} else {
-alert('navigator.share not available'); 
-}
+    
+canvas.on('mouse:wheel', function(opt) {
+var delta = opt.e.deltaY;
+var zoom = canvas.getZoom();
+zoom *= 0.999 ** delta;
+if (zoom > 20) zoom = 20;
+if (zoom < 0.01) zoom = 0.01;
+canvas.setZoom(zoom);
+opt.e.preventDefault();
+opt.e.stopPropagation();
 })
+    
+// canvas.on('mouse:wheel', function(opt) {
+//   var delta = opt.e.deltaY;
+//   var zoom = canvas.getZoom();
+//   zoom *= 0.999 ** delta;
+//   if (zoom > 20) zoom = 20;
+//   if (zoom < 0.01) zoom = 0.01;
+//   canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+//   opt.e.preventDefault();
+//   opt.e.stopPropagation();
+  
+//   if (zoom < 400 / 1000) {
+//   vpt[4] = 200 - 1000 * zoom / 2;
+//   vpt[5] = 200 - 1000 * zoom / 2;
+// } else {
+//   if (vpt[4] >= 0) {
+//     vpt[4] = 0;
+//   } else if (vpt[4] < canvas.getWidth() - 1000 * zoom) {
+//     vpt[4] = canvas.getWidth() - 1000 * zoom;
+//   }
+//   if (vpt[5] >= 0) {
+//     vpt[5] = 0;
+//   } else if (vpt[5] < canvas.getHeight() - 1000 * zoom) {
+//     vpt[5] = canvas.getHeight() - 1000 * zoom;
+//   }
+// }
+// })
+
+// canvas.on('mouse:wheel', function(opt) {
+// var delta = opt.e.deltaY;
+// var zoom = canvas.getZoom();
+// zoom *= 0.999 ** delta;
+// if (zoom > 20) zoom = 20;
+// if (zoom < 0.01) zoom = 0.01;
+// canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+// opt.e.preventDefault();
+// opt.e.stopPropagation();
+// var vpt = this.viewportTransform;
+// if (zoom < 400 / 1000) {
+//   vpt[4] = 200 - 1000 * zoom / 2;
+//   vpt[5] = 200 - 1000 * zoom / 2;
+// } else {
+//   if (vpt[4] >= 0) {
+//     vpt[4] = 0;
+//   } else if (vpt[4] < canvas.getWidth() - 1000 * zoom) {
+//     vpt[4] = canvas.getWidth() - 1000 * zoom;
+//   }
+//   if (vpt[5] >= 0) {
+//     vpt[5] = 0;
+//   } else if (vpt[5] < canvas.getHeight() - 1000 * zoom) {
+//     vpt[5] = canvas.getHeight() - 1000 * zoom;
+//   }
+// }
+// });
+
+$("#download").click(function(){
+$("#c").get(0).toBlob(function(blob){
+saveAs(blob, "myIMG.png");
 });
-</script>
-<script>
-//include jQuery library
-$('.xxx').click(function() {
-var name = $(this).find('value').html();
-alert('You clicked ' + name);
 });
 </script>
 </body>
