@@ -212,7 +212,7 @@ cursor:pointer;
 <h1>FREE AND SIMPLE TWIBBON GENERATOR</h1>
 
 <p class="box">
-<canvas id="c" width="600" height="600"></canvas>
+<canvas id="c"></canvas>
 </p>
  
 <p>
@@ -245,13 +245,13 @@ cursor:pointer;
 <script>
 var canvas = new fabric.Canvas('c');
 	
-canvas.setWidth(300);
-canvas.setHeight(300);
+canvas.setWidth(600);
+canvas.setHeight(600);
 centeredScaling: true;
 canvas.selection = false;
 canvas.backgroundColor = 'rgba(27, 31, 36, 0.1)';
 	
-document.getElementById("uploader").onchange = function(e) {
+document.getElementById("imgLoader").onchange = function(e) {
 var reader = new FileReader();
 reader.onload = function(e) {
 var image = new Image();
