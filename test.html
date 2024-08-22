@@ -8,16 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="#">
 
-<style type="text/css">
-CSS Pretty Print
+<style type="text/css"> 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
  
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;
-400;
-500;
-600;
-700;
-800;
-900&display=swap");
 *, *:after, *:before {
 box-sizing: border-box;
 }
@@ -215,35 +208,38 @@ box-sizing: border-box;
 </head>
 
 <body>
-<header class="header">
-<div class="container">
-<h1 class="text-center">
-FREE AND SIMPLE PFP GENERATOR
-</h1>
-</div>
-</header>
+<article>
+<h1>How to create a pop-up without JavaScript</h1>
+<p>Ever wanted a pop-up mechanism on your website, but you don't want to use JavaScript? Here's how:</p>
+<ol>
+<li>Add a <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> to your document</li> 
+<li>Insert a <code>&lt;div&gt;</code> to your <code>&lt;details&gt;</code> element</li>
+<li>Add a scaling animation to this <code>&lt;div&gt;</code></li>
+<li>Add this animation to the <code>&lt;div&gt;</code> when the <code>[open]</code> attribute is toggled on the <code>&lt;details&gt;</code> element</li>
+</ol>
+<p>Toggle the <strong>How it works</strong> button for more info.</p>
 
-<section class="container">
-<div class="row">
-<div class="twelve columns">
-<section class="text-center">
-<div class="buttons-wrapper">
-<button onclick="document.getElementById('photo').click();">Photo</button>
-<button onclick="document.getElementById('frame').click();">Bingkai</button>
-<button id="dl">Download</button>
-<button id="shared">Share</button>
-<input type="file" id="photo" accept="image/*" hidden/>
-<input type="file" id="frame" accept="image/*" hidden/>
+</article>
+
+<details>
+<summary>How it works<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><circle cx="128" cy="180" r="12"></circle><path d="M127.9995,144.0045v-8a28,28,0,1,0-28-28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></summary>
+<div>
+<p>The scaling effect you see when you open this <code>&lt;details&gt;</code> element is created by using a keyframe animation.</p>
+<p><pre><code>@keyframes scale { 
+&nbsp;0% {
+&nbsp;&nbsp;transform: scale(0);
+&nbsp;}
+&nbsp;100% {
+&nbsp;&nbsp;transform: scale(1);
+&nbsp;}
+}</code></pre> </p>
+<p>This animation is added to the <code>&lt;div&gt;</code>, but only when the <code>[open]</code> attribute is toggled.</p>
+<p><pre><code>details[open] div { 
+&nbsp;animation: scale .15s ease;
+}</code></pre></p>
+<p>Sadly there's no way (that I know of) to animate the  <code>&lt;div&gt;</code> when the  <code>&lt;details&gt;</code> is closing.</p>
 </div>
-<div id="output">
-<div class="box">
-<canvas id="imageCanvas"></canvas> 
-</div>
-</div>
-</section>
-</div>
-</div>
-</section>
+</details>
   
 <script>
 var canvas = new fabric.Canvas('imageCanvas', {
