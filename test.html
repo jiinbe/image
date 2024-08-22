@@ -239,7 +239,8 @@ canvas = new fabric.Canvas('c');
 canvas.setOverlayImage('https://jiinbe.github.io/picture/mask.png', canvas.renderAll.bind(canvas));
 
 canvas.selection = false;
-
+canvas.setWidth(600);
+canvas.setHeight(600);
     
 document.getElementById('imgLoader').onchange = function handleImage(e) {
 var reader = new FileReader();
