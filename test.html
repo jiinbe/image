@@ -234,29 +234,26 @@ object-fit:cover;
 </details>
   
 <script>
-<script>
 canvas = new fabric.Canvas('c');
 canvas.setOverlayImage('filter.png', canvas.renderAll.bind(canvas));
-
+canvas.backgroundColor = 'rgba(0,0,255,0.3)';
 canvas.selection = false;
-canvas.setWidth(600);
-canvas.setHeight(600);
-    
+
 document.getElementById('imgLoader').onchange = function handleImage(e) {
 var reader = new FileReader();
 reader.onload = function (event) { console.log('fdsf');
 var imgObj = new Image();
 imgObj.src = event.target.result;
 imgObj.onload = function () {
-
-// start fabricJS stuff           
+// start fabricJS stuff
+            
 var image = new fabric.Image(imgObj);          
-canvas.add(image);         
+canvas.add(image);          
 }        
 }
 reader.readAsDataURL(e.target.files[0]);
 }
-    
+	
 canvas.on('mouse:wheel', function(opt) {
 var delta = opt.e.deltaY;
 var zoom = canvas.getZoom();
@@ -267,13 +264,53 @@ canvas.setZoom(zoom);
 opt.e.preventDefault();
 opt.e.stopPropagation();
 })
-
-// Download
+	
 $("#download").click(function(){
 $("#c").get(0).toBlob(function(blob){
-saveAs(blob, "myIMG.png");
+saveAs(blob, "image.png");
 });
 });
+
+function selectFile() {
+document.getElementById("imgLoader").click();
+}
+	
+function checkInput() {
+var input = document.getElementById('imgLoader').value;
+var button = document.getElementById('download');
+button.disabled = input === '';
+}
+	
+$(document).ready(function(){
+$("#download").click(function(){
+$("#hide").hide();
+});
+});
+	
+$("#delete").click(function(){
+canvas.isDrawingMode = false;
+deleteObjects();
+});
+
+// select all objects
+function deleteObjects(){
+var activeObject = canvas.getActiveObject(),
+activeGroup = canvas.getActiveGroup();
+if (activeObject) {
+if (confirm('Apa kamu yakin?')) {
+canvas.remove(activeObject);
+}
+}
+else if (activeGroup) {
+if (confirm('Apa kamu yakin?')) {
+var objectsInGroup = activeGroup.getObjects();
+canvas.discardActiveGroup();
+objectsInGroup.forEach(function(object) {
+canvas.remove(object);
+});
+}
+}
+}
 </script>
 </body>
 </html>
