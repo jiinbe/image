@@ -243,37 +243,47 @@ cursor:pointer;
 </details>
   
 <script>
-canvas = new fabric.Canvas('c');
-canvas.setOverlayImage('filter.png', canvas.renderAll.bind(canvas));
-canvas.backgroundColor = 'rgba(0,0,255,0.3)';
-canvas.selection = false;
-
+var canvas = new fabric.Canvas('c');
 	
-document.getElementById('imgLoader').onchange = function handleImage(e) {
+canvas.setWidth(300);
+canvas.setHeight(300);
+centeredScaling: true;
+canvas.selection = false;
+canvas.backgroundColor = 'rgba(27, 31, 36, 0.1)';
+	
+document.getElementById("uploader").onchange = function(e) {
 var reader = new FileReader();
-reader.onload = function (event) { console.log('fdsf');
-var imgObj = new Image();
-imgObj.src = event.target.result;
-imgObj.onload = function () {
-// start fabricJS stuff
-            
-var image = new fabric.Image(imgObj);          
-canvas.add(image);          
-}        
+reader.onload = function(e) {
+var image = new Image();
+image.src = e.target.result;
+image.onload = function() {
+var img = new fabric.Image(image);
+img.set({
+borderColor: 'gray',
+cornerColor: 'black',
+transparentCorners: true,
+left: 100,
+top: 60
+});
+img.scaleToWidth(200);
+canvas.add(img).setActiveObject(img).renderAll();
+}
 }
 reader.readAsDataURL(e.target.files[0]);
 }
+
+fabric.Image.fromURL('filter.png', function(img) {
+canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
+});
 	
-canvas.on('mouse:wheel', function(opt) {
-var delta = opt.e.deltaY;
-var zoom = canvas.getZoom();
-zoom *= 0.999 ** delta;
-if (zoom > 20) zoom = 20;
-if (zoom < 0.01) zoom = 0.01;
-canvas.setZoom(zoom);
-opt.e.preventDefault();
-opt.e.stopPropagation();
-})
+canvas.on({
+'object:moving': function(e) {
+e.target.opacity = 0.6;
+},
+'object:modified': function(e) {
+e.target.opacity = 1;
+}
+});
 	
 $("#download").click(function(){
 $("#c").get(0).toBlob(function(blob){
