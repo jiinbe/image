@@ -102,16 +102,14 @@ background-color: #d8dee4;
 <input type="file" id="imgLoader" accept="image/*">
 <button id="hide" onclick="selectFile()">PILIH FILE</button>
 <button id="download">DOWNLOAD</button>
-<button id="imgur">LINK IMGUR</button>
+<button id="share">SHARE</button>
 </p>
 
-<p><a id="link" href=""></a></p>
 <!--<label for="toggle">close overlay</label>-->
 </dialog>
   
 <script>
 var canvas = new fabric.Canvas('c');
-var dataURL = null;
 	
 canvas.setWidth(600);
 canvas.setHeight(600);
@@ -176,26 +174,34 @@ $("#hide").hide();
 });
 });
 
-	
-function send_imgur() {
-if(dataURL != null){
-$.ajax({url: "https://api.imgur.com/3/image",
-headers: { 'Authorization': 'Client-ID 4ddb1cef2cbd23a' },
-data: {"image" : dataURL},
-type: "POST",
-success: function(result){
-$("#link").html("check your link here (open as a new tab)")
-.attr("href",result.data.link);
-},
-error: function(err){
-console.log(err);
-}});
-}else{
-console.log("no image provided");
+// Share
+document.getElementById("share").addEventListener("click", () => {
+// alert("share image");
+const dataUrl = c.toDataURL(); 
+fetch(dataUrl)
+.then(res => res.blob())
+.then(blob => {
+//console.log(blob)
+const filesArray = [new File([blob], 'image.png', { type: blob.type, lastModified: new Date().getTime() })];
+console.log(filesArray);
+const shareData = {
+title: "FREE AND SIMPLE PFP GENERATOR",
+text: "FREE AND SIMPLE PFP GENERATOR",
+url: "https://jiinbe.github.io/fabricjs2/",
+files: filesArray
+};
+console.log(shareData);
+if (navigator.share) {
+navigator.share(
+shareData
+)
+.then(() => alert("thanks for share")) 
+.catch(error => alert("error", error)); 
+} else {
+alert('navigator.share not available'); 
 }
-}
-
-$("#imgur").click(send_imgur);
+})
+});
 
 </script>
 </body>
