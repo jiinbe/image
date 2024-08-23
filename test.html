@@ -173,7 +173,9 @@ document.getElementById("imgLoader").click();
 function checkInput() {
 var input = document.getElementById('imgLoader').value;
 var button = document.getElementById('download');
+var button2 = document.getElementById('share');
 button.disabled = input === '';
+button2.disabled = input === '';
 }
 	
 $(document).ready(function(){
