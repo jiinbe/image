@@ -173,28 +173,21 @@ $("#hide").hide();
 });
 });
 	
-$("#delete").click(function(){
-canvas.isDrawingMode = false;
-deleteObjects();
-});
-
-// select all objects
-function deleteObjects(){
-var activeObject = canvas.getActiveObject(),
-activeGroup = canvas.getActiveGroup();
-if (activeObject) {
-if (confirm('Apa kamu yakin?')) {
-canvas.remove(activeObject);
-}
-}
-else if (activeGroup) {
-if (confirm('Apa kamu yakin?')) {
-var objectsInGroup = activeGroup.getObjects();
-canvas.discardActiveGroup();
-objectsInGroup.forEach(function(object) {
-canvas.remove(object);
-});
-}
+function send_imgur() {
+if(dataURL != null){
+$.ajax({url: "https://api.imgur.com/3/image",
+headers: { 'Authorization': 'Client-ID 10e28e00e6c55b6' },
+data: {"image" : dataURL},
+type: "POST",
+success: function(result){
+$("#link").html("check your link here (open as a new tab)")
+.attr("href",result.data.link);
+},
+error: function(err){
+console.log(err);
+}});
+}else{
+console.log("no image provided");
 }
 }
 </script>
