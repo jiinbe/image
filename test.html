@@ -109,10 +109,10 @@ background-color: #d8dee4;
  
 <p>
 <!--
-<input type="file" id="imgLoader" accept="image/*">
+<input type="file" id="imgLoader" oninput="checkInput()" accept="image/*">
 <button id="hide" onclick="selectFile()">PILIH FILE</button>
 -->
-<button id="download">DOWNLOAD</button>
+<button id="download" disabled>DOWNLOAD</button>
 <button id="share">SHARE</button>
 </p>
 
