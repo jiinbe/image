@@ -111,6 +111,7 @@ background-color: #d8dee4;
   
 <script>
 var canvas = new fabric.Canvas('c');
+var dataURL = null;
 	
 canvas.setWidth(600);
 canvas.setHeight(600);
@@ -175,7 +176,6 @@ $("#hide").hide();
 });
 });
 
-var dataURL = null;
 	
 function send_imgur() {
 if(dataURL != null){
