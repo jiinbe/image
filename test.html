@@ -178,7 +178,7 @@ var dataURL = null;
 function send_imgur() {
 if(dataURL != null){
 $.ajax({url: "https://api.imgur.com/3/image",
-headers: { 'Authorization': 'Client-ID 10e28e00e6c55b6' },
+headers: { 'Authorization': 'Client-ID 4ddb1cef2cbd23a' },
 data: {"image" : dataURL},
 type: "POST",
 success: function(result){
